@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  /* PRIMARY - Deep Teal (#004f69 inspired) */
+  --color-primary-50: oklch(0.97 0.02 210);
+  --color-primary-100: oklch(0.93 0.04 210);
+  --color-primary-200: oklch(0.87 0.06 210);
+  --color-primary-300: oklch(0.78 0.08 210);
+  --color-primary-400: oklch(0.68 0.1 210);
+  --color-primary-500: oklch(0.45 0.11 210); /* ≈ #004f69 */
+  --color-primary-600: oklch(0.39 0.1 210);
+  --color-primary-700: oklch(0.33 0.09 210);
+  --color-primary-800: oklch(0.27 0.08 210);
+  --color-primary-900: oklch(0.21 0.07 210);
+  --color-primary-950: oklch(0.16 0.05 210);
+
+  /* SECONDARY - Warm Orange (#ef972c inspired) */
+  --color-secondary-50: oklch(0.98 0.03 70);
+  --color-secondary-100: oklch(0.95 0.06 70);
+  --color-secondary-200: oklch(0.9 0.1 70);
+  --color-secondary-300: oklch(0.84 0.14 70);
+  --color-secondary-400: oklch(0.78 0.18 70);
+  --color-secondary-500: oklch(0.74 0.2 70); /* ≈ #ef972c */
+  --color-secondary-600: oklch(0.66 0.19 70);
+  --color-secondary-700: oklch(0.58 0.17 70);
+  --color-secondary-800: oklch(0.48 0.14 70);
+  --color-secondary-900: oklch(0.36 0.11 70);
+  --color-secondary-950: oklch(0.26 0.08 70);
+
+  /* DANGER - Soft Red (keeps good UX) */
+  --color-danger-50: oklch(0.97 0.02 25);
+  --color-danger-100: oklch(0.93 0.05 25);
+  --color-danger-200: oklch(0.87 0.09 25);
+  --color-danger-300: oklch(0.78 0.13 25);
+  --color-danger-400: oklch(0.7 0.17 25);
+  --color-danger-500: oklch(0.62 0.2 25);
+  --color-danger-600: oklch(0.54 0.19 25);
+  --color-danger-700: oklch(0.46 0.17 25);
+  --color-danger-800: oklch(0.36 0.14 25);
+  --color-danger-900: oklch(0.26 0.11 25);
+  --color-danger-950: oklch(0.18 0.08 25);
+}
