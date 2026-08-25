@@ -3,7 +3,6 @@ import type { User } from "@supabase/supabase-js";
 import type { ServiceResult } from "types/responses";
 import { supabase } from "config/supabase";
 import Paths from "routes/paths";
-import { SYSTEM_ID } from "global/constants";
 
 export const registerService = async (
   values: RegisterFormValues
@@ -17,7 +16,6 @@ export const registerService = async (
       }`,
       data: {
         name: values.name,
-        system_id: SYSTEM_ID
       },
     },
   });

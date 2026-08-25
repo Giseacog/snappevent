@@ -1,5 +1,4 @@
 import { supabase } from "config/supabase";
-import { SYSTEM_ID } from "global/constants";
 import type { Item } from "types/entities/Item";
 import type { AddItemFormValues } from "types/formValues";
 import type { ServiceResult } from "types/responses";
@@ -11,7 +10,6 @@ export const addItemService = async (
     .from("items")
     .insert({
       name: values.name,        
-      system_id: SYSTEM_ID
     })
     .select()
     .single();

@@ -1,5 +1,5 @@
 import { supabase } from "config/supabase";
-import { PAGE_SIZE, SYSTEM_ID } from "global/constants";
+import { PAGE_SIZE } from "global/constants";
 import type { Item } from "types/entities/Item";
 import type { PaginatedResult, ServiceResult } from "types/responses";
 
@@ -13,7 +13,6 @@ export const getMyItemsService = async (
     .from("items")
     .select("*", { count: "exact" })
     .is("deactivated_at", null)
-    .eq("system_id", SYSTEM_ID)
     .range(from, to);
 
   if (error) {
