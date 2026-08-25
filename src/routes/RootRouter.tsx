@@ -7,7 +7,6 @@ import { Login } from "pages/auth/Login/Login";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { ForgotPassword } from "pages/auth/ForgotPassword/ForgotPassword";
 import { ResetPassword } from "pages/auth/ResetPassword/ResetPassword";
-import { ItemDetail } from "pages/ItemDetail/ItemDetail";
 import { EmailVerified } from "pages/auth/EmailVerified/EmailVerified";
 import { Home } from "pages/Home/Home";
 import { PublicRoute } from "./PublicRoute";
@@ -81,14 +80,6 @@ export const RootRouter = () => {
         element={
           <ProtectedRoute>
             <Home />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path={Paths.ITEM_DETAIL}
-        element={
-          <ProtectedRoute>
-            <ItemDetail />
           </ProtectedRoute>
         }
       />

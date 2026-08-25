@@ -11,10 +11,6 @@ class Paths {
 
   public static readonly HOME = "/";
 
-  public static readonly ITEM_DETAIL = "/items/:id";
-  public static readonly ITEM_DETAIL_PATH = (id: string): string =>
-    this.ITEM_DETAIL.replace(":id", id);
-
   public static readonly DEFAULT_AUTHENTICATED = this.HOME;
 }
 

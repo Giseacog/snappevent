@@ -26,13 +26,6 @@ export const TEXTS = {
     },
   },
 
-  modals: {
-    deleteItem: {
-      confirmText: "Are you sure you want to delete",
-      confirmButton: "Yes, delete",
-    },
-  },
-
   auth: {
     register: {
       title: "Supareact",
@@ -138,8 +131,7 @@ export const TEXTS = {
       },
       errors: {
         passwordsDoNotMatch: "Passwords do not match.",
-        invalidOrExpiredLink:
-          "This reset link is invalid or has expired.",
+        invalidOrExpiredLink: "This reset link is invalid or has expired.",
         updateError:
           "An error occurred while updating the password. Please try again.",
         invalidResetLink: "This reset link is invalid or expired.",
@@ -155,57 +147,5 @@ export const TEXTS = {
     },
   },
 
-  home: {
-    addItem: {
-      title: "Create a new Item",
-      subtitle:
-        "Fill out the form below to create a new Item. You can manage your Items later.",
-      form: {
-        fields: {
-          name: {
-            label: "Item Name",
-            placeholder: "My Incredible Item",
-          },
-        },
-        button: "Add Item",
-      },
-    },
-
-    itemsList: {
-      title: "Your Items",
-      description:
-        "Here you can see all the Items you've created. Click on any of them to view details or manage settings.",
-      emptyState: "You haven't created any Items yet.",
-      errorState:
-        "An error occurred while fetching your Items. Please try again later.",
-    },
-
-    deleteButton: {
-      title: "Delete",
-    },
-  },
-
-  itemDetail: {
-    header: {
-      subtitle: "Detailed information and settings for this item.",
-    },
-
-    notFound: "Item not found.",
-
-    sections: {
-      general: {
-        title: "General Information",
-        nameLabel: "Name",
-        idLabel: "ID",
-      },
-
-      metadata: {
-        title: "Metadata",
-        statusLabel: "Status",
-        createdLabel: "Created",
-        statusActive: "Active",
-        statusInactive: "Unactive",
-      },
-    },
-  },
+  home: {},
 } as const;
