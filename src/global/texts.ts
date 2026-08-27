@@ -26,6 +26,13 @@ export const TEXTS = {
     },
   },
 
+  modals: {
+    deleteItem: {
+      confirmText: "Are you sure you want to delete",
+      confirmButton: "Yes, delete",
+    },
+  },
+
   auth: {
     register: {
       title: "Supareact",

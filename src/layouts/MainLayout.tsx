@@ -10,9 +10,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     <main className="max-h-dvh h-dvh flex flex-col">
       <Navbar />
 
-      <div className="max-w-2xl mx-auto w-full px-6 py-4 bg-white h-full">
-        {children}
-      </div>
+      <div className="max-w-full w-full bg-white h-full">{children}</div>
 
       <Modal />
     </main>
