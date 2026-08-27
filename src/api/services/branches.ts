@@ -1,5 +1,10 @@
 import { supabase } from "config/supabase";
-import { Branch, BranchDTO, mapBranchToClient, mapBranchToServer } from "../mappers/branches";
+import {
+  mapBranchToClient,
+  mapBranchToServer,
+  type Branch,
+  type BranchDTO,
+} from "../mappers/branches";
 
 export const getBranchesService = async (): Promise<Branch[]> => {
   const { data, error } = await supabase.from("branches").select("*");
@@ -8,21 +13,39 @@ export const getBranchesService = async (): Promise<Branch[]> => {
 };
 
 export const getBranchByIdService = async (id: string): Promise<Branch> => {
-  const { data, error } = await supabase.from("branches").select("*").eq("id", id).single();
+  const { data, error } = await supabase
+    .from("branches")
+    .select("*")
+    .eq("id", id)
+    .single();
   if (error) throw new Error(error.message);
   return mapBranchToClient(data as BranchDTO);
 };
 
-export const createBranchService = async (branch: Omit<Branch, "id" | "createdAt">): Promise<Branch> => {
+export const createBranchService = async (
+  branch: Omit<Branch, "id" | "createdAt">,
+): Promise<Branch> => {
   const dto = mapBranchToServer(branch);
-  const { data, error } = await supabase.from("branches").insert(dto).select().single();
+  const { data, error } = await supabase
+    .from("branches")
+    .insert(dto)
+    .select()
+    .single();
   if (error) throw new Error(error.message);
   return mapBranchToClient(data as BranchDTO);
 };
 
-export const updateBranchService = async (id: string, branch: Partial<Branch>): Promise<Branch> => {
+export const updateBranchService = async (
+  id: string,
+  branch: Partial<Branch>,
+): Promise<Branch> => {
   const dto = mapBranchToServer(branch);
-  const { data, error } = await supabase.from("branches").update(dto).eq("id", id).select().single();
+  const { data, error } = await supabase
+    .from("branches")
+    .update(dto)
+    .eq("id", id)
+    .select()
+    .single();
   if (error) throw new Error(error.message);
   return mapBranchToClient(data as BranchDTO);
 };

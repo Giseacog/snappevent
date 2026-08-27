@@ -1,12 +1,8 @@
-import { useState } from "react";
+import { useContext, useState, type ChangeEvent, type FormEvent } from "react";
+import { ModalContext } from "context/ModalContext";
 
-interface AddBranchFormProps {
-  onClose: () => void;
-  onSaved: () => void;
-}
-
-export const AddBranchForm = ({ onClose, onSaved }: AddBranchFormProps) => {
-  // Estado inicial basado en tu esquema SQL
+export const AddBranchForm = () => {
+  const { closeModal } = useContext(ModalContext);
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -16,7 +12,7 @@ export const AddBranchForm = ({ onClose, onSaved }: AddBranchFormProps) => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
@@ -24,29 +20,9 @@ export const AddBranchForm = ({ onClose, onSaved }: AddBranchFormProps) => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    try {
-      // AQUÍ VA TU LLAMADA A LA API
-      // Ejemplo:
-      // await createBranch({
-      //   ...formData,
-      //   business_id: user.business_id // Asegúrate de incluir el business_id
-      // });
-
-      console.log("Datos a enviar:", formData);
-
-      // Si todo sale bien:
-      if (onSaved) onSaved(); // Para recargar la lista de sucursales
-      if (onClose) onClose(); // Para cerrar el modal
-    } catch (error) {
-      console.error("Error al crear la sucursal:", error);
-      alert("Hubo un error al guardar la sucursal.");
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   return (
@@ -79,10 +55,10 @@ export const AddBranchForm = ({ onClose, onSaved }: AddBranchFormProps) => {
         >
           Dirección
         </label>
-        <textarea
+        <input
+          type="text"
           id="address"
           name="address"
-          rows="2"
           value={formData.address}
           onChange={handleChange}
           placeholder="Calle, Número, Colonia..."
@@ -131,7 +107,7 @@ export const AddBranchForm = ({ onClose, onSaved }: AddBranchFormProps) => {
       <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-200">
         <button
           type="button"
-          onClick={onClose}
+          onClick={() => closeModal()}
           disabled={isSubmitting}
           className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50"
         >
