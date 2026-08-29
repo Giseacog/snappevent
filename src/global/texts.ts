@@ -14,10 +14,6 @@ export const TEXTS = {
   },
 
   navbar: {
-    logo: {
-      prefix: "Supa",
-      highlight: "React",
-    },
     menu: "Menú",
     closeSession: "Close Session",
     logOut: "Cerrar Sesión",

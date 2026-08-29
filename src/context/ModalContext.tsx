@@ -1,4 +1,4 @@
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, useCallback, useState, type ReactNode } from "react";
 
 interface ModalContextType {
   isModalOpen: boolean;
@@ -19,15 +19,15 @@ const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState<ReactNode>(null);
 
-  const openModal = (content: ReactNode) => {
+  const openModal = useCallback((content: ReactNode) => {
     setModalContent(content);
     setIsModalOpen(true);
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsModalOpen(false);
     setModalContent(null);
-  };
+  }, []);
 
   return (
     <ModalContext.Provider

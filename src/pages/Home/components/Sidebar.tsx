@@ -27,7 +27,7 @@ export const Sidebar = ({ branches, isLoading, hasError }: SidebarProps) => {
 
   return (
     <aside className="w-72 bg-white border-r border-gray-200 p-6 flex flex-col shadow-sm">
-      <h2 className="text-xl font-bold text-gray-800 mb-6">Mis Sucursales</h2>
+      <h2 className="text-xl font-bold text-gray-800 mb-6">Sucursales</h2>
 
       <div className="flex-1 overflow-y-auto">{renderContent()}</div>
 

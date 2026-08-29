@@ -1,33 +1,19 @@
-import { useContext, useState, type ChangeEvent, type FormEvent } from "react";
+import { useContext } from "react";
 import { ModalContext } from "context/ModalContext";
+import { useAddBranchForm } from "pages/Home/hooks/useAddBranchForm";
 
 export const AddBranchForm = () => {
   const { closeModal } = useContext(ModalContext);
-  const [formData, setFormData] = useState({
-    name: "",
-    address: "",
-    phone: "",
-    is_active: true,
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-  };
+  const { formData, handleChange, handleSubmit, isSubmitting, error } =
+    useAddBranchForm(closeModal);
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      {/* Nombre (Requerido) */}
+      {error && (
+        <div className="p-3 bg-red-50 text-red-700 border border-red-200 rounded-lg text-sm font-medium">
+          {error}
+        </div>
+      )}
       <div>
         <label
           htmlFor="name"
@@ -47,7 +33,6 @@ export const AddBranchForm = () => {
         />
       </div>
 
-      {/* Dirección */}
       <div>
         <label
           htmlFor="address"
@@ -66,7 +51,6 @@ export const AddBranchForm = () => {
         />
       </div>
 
-      {/* Teléfono */}
       <div>
         <label
           htmlFor="phone"
@@ -85,7 +69,6 @@ export const AddBranchForm = () => {
         />
       </div>
 
-      {/* Activo (Toggle / Checkbox) */}
       <div className="flex items-center mt-2">
         <input
           type="checkbox"
@@ -103,7 +86,6 @@ export const AddBranchForm = () => {
         </label>
       </div>
 
-      {/* Botones de Acción */}
       <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-200">
         <button
           type="button"

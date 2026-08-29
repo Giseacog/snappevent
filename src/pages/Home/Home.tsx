@@ -1,19 +1,35 @@
+import { useEffect, useContext } from "react";
 import { useBranches } from "api/hooks/branches";
 import { useAuth } from "hooks/useAuth";
 import { MainLayout } from "layouts/MainLayout";
 import { Sidebar } from "./components/Sidebar";
+import { useBusinessByAdmin } from "api/hooks/businesses";
+import { ModalContext } from "context/ModalContext";
+import { AddBusinessForm } from "./components/AddBusinessForm";
 
 export const Home = () => {
   const { user } = useAuth();
-  const { branches, isLoading, error } = useBranches();
-  const hasError = !!error;
+  const { business, isLoading: isLoadingBusiness } = useBusinessByAdmin(
+    user?.id || "",
+  );
+  const { branches, isLoading: isLoadingBranches, error } = useBranches();
+
+  const { openModal } = useContext(ModalContext);
+
+  useEffect(() => {
+    if (!isLoadingBusiness && !business) {
+      openModal(<AddBusinessForm />);
+    }
+  }, [business, isLoadingBusiness, openModal]);
+
+  const hasError = !!error || !business;
 
   return (
     <MainLayout>
       <div className="flex h-full bg-gray-50">
         <Sidebar
           branches={branches || []}
-          isLoading={isLoading}
+          isLoading={isLoadingBranches}
           hasError={hasError}
         />
 
